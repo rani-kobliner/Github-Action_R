@@ -1,15 +1,15 @@
-name: Using Defaults
+name: Job Default
 on:
   push:
     branches: feature/defaults
+defaults:
+  run:
+    shell: bash
+    working-directory: src
 jobs:
   first-job:
     name: First Job
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: src
     steps:
       - name: Create Source Directory
         run: mkdir src
@@ -28,9 +28,6 @@ jobs:
     steps:
       - name: Create Source Directory
         run: mkdir src
-        shell: bash
         working-directory: .
       - name: Use Bash
         run: echo "I'm running bash in $(pwd). So sad."
-        shell: bash
-        working-directory: src
